@@ -1,11 +1,13 @@
+import React from 'react';
 import './App.css';
+import Calendar from './components/Calendar'
 
 function App() {
-  return (
-    <>
-      <h1>Let's get started</h1>
-    </>
-  );
+    return (
+        <>
+            <Calendar />
+        </>
+    );
 }
 
 export default App;
