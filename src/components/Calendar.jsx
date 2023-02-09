@@ -20,9 +20,9 @@ function Calendar() {
         <div className="h-[600px] w-[450px] p-[20px] border-solid border-4 border-blue-500 rounded-[12px] overflow-hidden overflow-y-auto">
             <div className="flex w-[100%] justify-between items-center">
                 <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent rounded-[6px] py-[8px] shadow-md">Platform ↓</button>
-                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-blue-500 rounded-[6px] py-[8px] shadow-md" onClick={() => setIn24hr(true)
+                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent  rounded-[6px] py-[8px] shadow-md focus:ring focus:ring-blue-500 outline-none" autoFocus onClick={() => setIn24hr(true)
                 }>In 24 Hours</button>
-                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent rounded-[6px] py-[8px] shadow-md" onClick={() => setIn24hr(false)
+                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent rounded-[6px] py-[8px] shadow-md focus:ring focus:ring-blue-500" onClick={() => setIn24hr(false)
                 }>Upcoming</button>
             </div>
             {
