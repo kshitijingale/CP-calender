@@ -9,6 +9,7 @@ function Calendar() {
     const [platform, setPlatform] = useState('all')
     let contestCount = 0;
     async function getData(platform) {
+        contestCount = 0;
         try {
             let res = await (axios.get(`https://kontests.net/api/v1/${platform}`));
             if (platform !== "all") {
@@ -85,12 +86,12 @@ function Calendar() {
     useEffect(() => {
         getSites();
         getData(platform);
-    }, [platform]);
+    }, [platform, in24hr]);
 
     return (
         <div className="h-[600px] w-[450px] p-[20px] border-solid border-4 border-blue-500 rounded-[12px] overflow-hidden overflow-y-auto">
             <div className="flex w-[100%] justify-between items-center">
-                <select className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent rounded-[6px] py-[8px] shadow-md w-[125px] outline-none" value={platform} onChange={e => setPlatform(e.target.value)}>
+                <select className="bg-[#171717] border px-[15px] text-blue-500  border-transparent rounded-[6px] py-[8px] shadow-md w-[125px] outline-none" value={platform} onChange={e => setPlatform(e.target.value)}>
                     <option value={'all'}>All</option>
                     {
                         sites.map((site) => {
@@ -99,9 +100,9 @@ function Calendar() {
                     }
 
                 </select>
-                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent  rounded-[6px] py-[8px] shadow-md focus:ring focus:ring-blue-500 outline-none" autoFocus onClick={() => setIn24hr(true)
+                <button className={`bg-[#171717] px-[15px] text-blue-500 rounded-[6px] py-[8px] shadow-md border-2  ${in24hr ? "border-blue-500" : "border-transparent"}`} onClick={() => setIn24hr(true)
                 }>In 24 Hours</button>
-                <button className="bg-[#171717] border px-[15px] text-blue-500 border-solid border-2 border-transparent rounded-[6px] py-[8px] shadow-md focus:ring focus:ring-blue-500" onClick={() => setIn24hr(false)
+                <button className={`bg-[#171717]  px-[15px] text-blue-500 rounded-[6px] py-[8px] shadow-md border-2 ${in24hr ? "border-transparent" : "border-blue-500"}`} onClick={() => setIn24hr(false)
                 }>Upcoming</button>
             </div>
             {
@@ -119,12 +120,17 @@ function Calendar() {
                             <IsEmpty count={contestCount} />
                         </>
                     ) : (
-                        list.map((contest) => {
-                            if (contest.in_24_hours === 'No') {
-                                return <ContestCard cardData={contest} />
-                            }
-                            return;
-                        })
+                        <>
+                            {list.map((contest) => {
+                                if (contest.in_24_hours === 'No') {
+                                    contestCount = contestCount + 1;
+                                    return <ContestCard cardData={contest} />
+                                } else {
+                                    return;
+                                }
+                            })}
+                            <IsEmpty count={contestCount} />
+                        </>
                     )
                 )
                     : (
