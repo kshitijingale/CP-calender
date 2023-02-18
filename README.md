@@ -4,6 +4,8 @@
 
 ### Description - An Website that keeps students updated about there Competitive Programming Contests.
 
+**Live** : [Link](https://cp-calender-kshitij.netlify.app/)
+
  **Tech Stack** : React, Tailwindcss
 
  **API used** : [Kontests](https://kontests.net/api)
@@ -14,4 +16,4 @@
 
  ![ss1](src/assets/SS/1.png)
 
- ![ss1](src/assets/SS/2.png)
+ ![ss2](src/assets/SS/2.png)
