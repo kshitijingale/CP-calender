@@ -6,6 +6,7 @@ function ContestCard({ cardData }) {
     const startInfo = start_time.split('T');
     const startDate = startInfo[0].substring(0, 10);
     let startTime = startInfo[1].substring(0, 8);
+
     // start_time is diffrently formatted for CodeChef
     if (site === 'CodeChef') {
         startTime = startInfo[0].substring(11, 19);
@@ -32,7 +33,7 @@ function ContestCard({ cardData }) {
     return (
         <div className='h-[150px] mt-[16px] bg-[#171717] rounded-[6px] shadow-md flex' >
             <div className='self-center  px-[20px]'>
-                <img className='w-[45px]' alt='icon' src={require(`../assets/icons/${site}.png`)} />
+                <img className='min-w-[45px] w-[45px]' alt='icon' src={require(`../assets/icons/${site}.png`)} />
             </div>
             <div className='self-center pr-[20px] overflow-hidden'>
                 <a href={`${url}`} className='cursor-pointer'>
