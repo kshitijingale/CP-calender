@@ -37,7 +37,7 @@ function ContestCard({ cardData }) {
             </div>
             <div className='self-center pr-[20px] overflow-hidden'>
                 <a href={`${url}`} className='cursor-pointer'>
-                    <h1 className='text-blue-500 text-lg mb-[10px]'>{name}</h1>
+                    <h1 className='text-blue-500 text-lg mb-[10px] max-h-[56px] overflow-hidden'>{name}</h1>
                     <p className='text-[#fff] text-sm'>
                         Starting Date : {startDate}
                         <br />
